@@ -1,0 +1,343 @@
+// This is your Prisma schema file,
+// learn more about it in the docs: https://pris.ly/d/prisma-schema
+
+generator client {
+  provider = "prisma-client-js"
+}
+
+datasource db {
+  provider  = "postgresql"
+  url       = env("DATABASE_URL")
+  directUrl = env("DIRECT_URL")
+}
+        
+
+enum UserProfile {
+  CLIENT
+  TRANSPORTER
+  ADMIN
+}
+
+/**
+ * model FreightOffer {
+ * id                    String      @id @default(uuid())
+ * createdAt             DateTime?   @default(now())
+ * freightRequestId      String?
+ * transporterId         String
+ * vehicleId             String?
+ * price                 Decimal
+ * estimatedDeliveryDate DateTime?   @db.Date
+ * notes                 String?
+ * status                OfferStatus @default(PENDING)
+ * FreightRequest FreightRequest? @relation("RequestOffers", fields: [freightRequestId], references: [id], onDelete: Cascade)
+ * Transporter    User            @relation("TransporterOffers", fields: [transporterId], references: [id], onDelete: Cascade)
+ * Vehicle        Vehicle?        @relation(fields: [vehicleId], references: [id], onDelete: SetNull)
+ * }
+ */
+
+model TokenReset {
+  id         String   @id @default(cuid())
+  token      String
+  expiryDate DateTime
+
+  userId String?
+  user   User?   @relation(fields: [userId], references: [id])
+}
+
+model People {
+  id             String  @id @default(uuid())
+  fullName       String
+  documentNumber String  @unique // NIF, Bilhete ou outro
+  phone          String?
+  provincia      String
+  userId         String  @unique
+
+  user User @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([documentNumber])
+  @@map("people")
+}
+
+model User {
+  id         String      @id @default(uuid())
+  email      String      @unique
+  password   String
+  profile    UserProfile @default(CLIENT)
+  isActive   Boolean     @default(true)
+  isVerified Boolean     @default(false)
+  createdAt  DateTime    @default(now())
+  updatedAt  DateTime    @updatedAt
+
+  person      People?
+  client      Client?
+  transporter Transporter?
+
+  vehicles               Vehicle[]
+  reviews                Review[]
+  freightsAsClient       Freight[]                @relation("ClientFreights")
+  freightsAsTransporter  Freight[]                @relation("TransporterFreights")
+  images                 Image[]
+  EmailConfirmationToken EmailConfirmationToken[]
+  Notification           Notification[]
+  TokenReset             TokenReset[]
+
+  @@index([email])
+  @@map("users")
+}
+
+model Client {
+  id     String @id @default(uuid())
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  accountType AccountType
+  companyName String?
+  nif         String?
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+  @@index([nif])
+  @@map("clients")
+}
+
+enum AccountType {
+  INDIVIDUAL
+  COMPANY
+}
+
+model Transporter {
+  id     String @id @default(uuid())
+  userId String @unique
+  user   User   @relation(fields: [userId], references: [id], onDelete: Cascade)
+
+  experienceYears Int?
+
+  // Campos específicos do transportador
+  licensePlate  String  @unique
+  driverLicense String  @unique
+  availability  Boolean @default(true)
+
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@index([userId])
+  @@map("transporters")
+}
+
+model EmailConfirmationToken {
+  id        String    @id @default(uuid())
+  token     String    @unique
+  userId    String
+  user      User      @relation(fields: [userId], references: [id], onDelete: Cascade)
+  expiresAt DateTime
+  usedAt    DateTime?
+
+  createdAt DateTime @default(now())
+
+  @@index([token])
+  @@map("email_confirmation_tokens")
+}
+
+model Vehicle {
+  id        String   @id @default(uuid())
+  brand     String
+  model     String
+  type      String
+  status    String   @default("Disponível")
+  isActive  Boolean  @default(true)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  licensePlate String  @unique
+  loadCapacity Int
+  trailerType  String?
+  baseProvince String
+
+  userId   String
+  user     User       @relation(fields: [userId], references: [id])
+  Image    Image[]
+  Tracking Tracking[]
+  Freight  Freight[]
+
+  @@map("vehicles")
+}
+
+model Freight {
+  id                    String        @id
+  description           String
+  clientId              String
+  transporterId         String?
+  vehicleId             String?
+  origin                String
+  status                FreightStatus @default(PENDING)
+  destination           String
+  originState           String
+  destinationState      String
+  cargoType             String
+  paymentMethod         String
+  price                 Float?
+  requiresLoadingHelp   Boolean
+  requiresUnloadingHelp Boolean
+  hasInsurance          Boolean
+
+  weightKg     Float? // optional
+  quantity     Int? // optional
+  lengthCm     Float? // optional
+  widthCm      Float? // optional
+  heightCm     Float? // optional
+  pickupDate   DateTime?
+  deliveryDate DateTime?
+
+  originCoordinates      String
+  destinationCoordinates String
+  estimatedDistance      Float
+  estimatedTime          Float
+
+  createdAt    DateTime  @default(now())
+  updatedAt    DateTime  @updatedAt
+  canceledAt   DateTime?
+  attributedAt DateTime?
+
+  cancelationReason String?
+
+  // Relacionamentos
+  client      User     @relation("ClientFreights", fields: [clientId], references: [id])
+  transporter User?    @relation("TransporterFreights", fields: [transporterId], references: [id])
+  vehicle     Vehicle? @relation(fields: [vehicleId], references: [id])
+
+  Review                  Review[]
+  Image                   Image[]
+  Tracking                Tracking[]
+  FreightStatusHistory    FreightStatusHistory[]
+  FreightLocationTracking FreightLocationTracking[]
+  FreightLastLocation     FreightLastLocation?
+
+  @@map("freights")
+}
+
+enum FreightStatus {
+  PENDING
+  ACCEPTED
+  IN_PROGRESS
+  COMPLETED
+  CANCELED
+}
+
+model FreightStatusHistory {
+  id        String        @id @default(uuid())
+  freight   Freight       @relation(fields: [freightId], references: [id])
+  freightId String
+  status    FreightStatus
+  timestamp DateTime      @default(now())
+
+  @@index([freightId])
+}
+
+model FreightLocationTracking {
+  id        String   @id @default(uuid())
+  freightId String
+  freight   Freight  @relation(fields: [freightId], references: [id])
+  latitude  Float
+  longitude Float
+  speed     Float?
+  direction String?
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+
+  @@map("freight_location_tracking")
+}
+
+model FreightLastLocation {
+  id        String   @id @default(uuid())
+  freightId String   @unique
+  latitude  Float
+  longitude Float
+  speed     Float?
+  direction String?
+  isActive  Boolean  @default(true)
+  startedAt DateTime @default(now())
+  timestamp DateTime @default(now())
+
+  freight   Freight  @relation(fields: [freightId], references: [id], onDelete: Cascade)
+  createdAt DateTime @default(now())
+  updatedAt DateTime @updatedAt
+}
+
+model Tracking {
+  id        String    @id @default(uuid())
+  freightId String    @unique
+  isActive  Boolean   @default(true)
+  startedAt DateTime  @default(now())
+  endedAt   DateTime?
+  vehicleId String?
+
+  freight Freight  @relation(fields: [freightId], references: [id])
+  Vehicle Vehicle? @relation(fields: [vehicleId], references: [id])
+
+  updatedAt DateTime @updatedAt
+}
+
+model Review {
+  id        String   @id @default(uuid())
+  rating    Int // Nota de 1 a 5
+  comment   String? // Comentário opcional
+  freightId String
+  freight   Freight  @relation(fields: [freightId], references: [id])
+  createdAt DateTime @default(now())
+  User      User?    @relation(fields: [userId], references: [id])
+  userId    String?
+
+  @@map("reviews")
+}
+
+model Image {
+  id        String    @id @default(uuid())
+  type      ImageType
+  path      String
+  filename  String
+  userId    String?   @map("user_id")
+  vehicleId String?   @map("vehicle_id")
+  freightId String?   @map("freight_id")
+  createdAt DateTime  @default(now())
+  updatedAt DateTime  @updatedAt
+
+  user    User?    @relation(fields: [userId], references: [id])
+  vehicle Vehicle? @relation(fields: [vehicleId], references: [id])
+  freight Freight? @relation(fields: [freightId], references: [id])
+
+  @@map("images")
+}
+
+// Enum for image types
+// This enum defines the different types of images that can be uploaded in the system.
+enum ImageType {
+  PROFILE_IMAGE
+  PROFILE_DOCUMENT
+  VEHICLE_IMAGE
+  VEHICLE_DOCUMENT
+  FREIGHT_IMAGE
+}
+
+model Notification {
+  id        String           @id @default(uuid())
+  userId    String
+  user      User             @relation(fields: [userId], references: [id], onDelete: Cascade)
+  title     String
+  message   String
+  type      NotificationType // can be enum if you prefer
+  relatedId String? // reference to freight, offer, etc
+  isRead    Boolean          @default(false)
+  createdAt DateTime         @default(now())
+}
+
+enum NotificationType {
+  FREIGHT_STATUS
+  NEW_REQUEST
+  MESSAGE
+  SYSTEM
+}

@@ -1,0 +1,16 @@
+version: "3.9"  # (opcional, mas recomendado)
+
+services:
+  connect-pg:
+    image: bitnami/postgresql:latest
+    ports:
+      - '5432:5432'
+    environment:
+      - POSTGRES_USER=docker
+      - POSTGRES_PASSWORD=docker
+      - POSTGRES_DB=kimalink
+    volumes:
+      - pgdata:/bitnami/postgresql  # ✅ Aqui sim é lista
+
+volumes:
+  pgdata:  # ✅ Definido como um volume nomeado no root

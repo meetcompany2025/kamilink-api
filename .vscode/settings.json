@@ -1,0 +1,8 @@
+{
+    // Formatar automaticamente ao salvar
+    "editor.formatOnSave": true,
+    // Aplicar formatação ao salvar especificamente em arquivos Prisma
+    "[prisma]": {
+        "editor.defaultFormatter": "Prisma.prisma"
+    }
+}

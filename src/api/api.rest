@@ -1,0 +1,237 @@
+### GET - hello route
+GET http://localhost:3000/app/register 
+
+### Confirmar conta com o token recebido no email
+GET http://localhost:3000/email-confirmation/confirm?token=f48f5691-557b-467a-b58e-fc4a156c01d1
+# MMUXNJX7NU
+
+# USERS ROUTES
+### Criar usuário com perfil CLIENT
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "email": "muanza787@gmail.com",
+  "password": "123456",
+  "profile": "CLIENT",
+  "fullName": "Ismael Muanza",
+  "documentNumber": "987654321LA7",
+  "phone": "923001122",
+  "provincia": "Luanda",
+  "accountType": "INDIVIDUAL",
+  "companyName": "Empresa Ismael",
+  "nif": "12345678907"
+}
+
+
+### Criar usuário com perfil TRANSPORTER
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "email": "ismaelmuanza99@gmail.com",
+  "password": "12345678@1",
+  "profile": "TRANSPORTER",
+  "fullName": "Carlos Transportador",
+  "documentNumber": "123456789LA",
+  "phone": "924334455",
+  "provincia": "Huambo",
+  "vehicleTypes": ["Caminhão"],
+  "experienceYears": 3,
+  "licensePlate": "HU-45-67-ZZ",
+  "driverLicense": "LT9988776655"
+}
+
+
+### Criar usuário com perfil ADMIN (sem entidades extras)
+POST http://localhost:3000/users
+Content-Type: application/json
+
+{
+  "email": "admin@example.c om",
+  "password": "123456",
+  "profile": "ADMIN",
+  "fullName": "Administrador Geral",
+  "documentNumber": "1122334455LA",
+  "phone": "928887766",
+  "provincia": "Namibe"
+}
+
+
+### get users 
+GET http://localhost:3000/users 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiYmJhYjEzMS1iNWYyLTQyZDItYjdhMC0yNjc0ZjliZjFmMmUiLCJwcm9maWxlIjoiQ0xJRU5UIiwiaWF0IjoxNzUyNTUwMDMzLCJleHAiOjE3NTI2MzY0MzN9.gqJZxFsQK9SRQiTKEFFIZU0O7FHd3FZRo-zEmKDejEs
+
+### get user by id
+GET http://localhost:3000/users/d28b20f8-112e-495b-9bf4-3ed0347b22dd 
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkMjhiMjBmOC0xMTJlLTQ5NWItOWJmNC0zZWQwMzQ3YjIyZGQiLCJwcm9maWxlIjoiQ0xJRU5UIiwiaWF0IjoxNzUxMzg1NTE0LCJleHAiOjE3NTE0NzE5MTR9.yonVq5x-JBQ8NyGsagV-SrIlhJh2xSam9FWqryZ3zs4
+
+### auth 
+GET http://localhost:3000/auth/me
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3Yjk4MDUyNS00YWZmLTRiMGEtYjAzMC1kMjllMjAwOTRiNTgiLCJwcm9maWxlIjoiQ0xJRU5UIiwiaWF0IjoxNzYxMjIyNzM4LCJleHAiOjE3NjEzMDkxMzh9.8kVKmdXSlIyrqjMAWif9ucij-JyIeD6348nryh2qgvM
+
+### auth 
+POST http://localhost:3000/auth/login
+Content-Type: application/json
+
+{
+    "email": "ismaelmuanza99@gmail.com",
+    "password": "12345678@1"
+}
+
+### create a Freight with extra services
+POST http://localhost:3000/freights
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3Yjk4MDUyNS00YWZmLTRiMGEtYjAzMC1kMjllMjAwOTRiNTgiLCJwcm9maWxlIjoiQ0xJRU5UIiwiaWF0IjoxNzYxMTA0MzkzLCJleHAiOjE3NjExOTA3OTN9.VpU1HeKeqmCGJwQJI9g09kSkL4-8WZTCRCOzG4lKH-0
+Content-Type: application/json
+
+{
+  "description": "Transporte de materiais de construção",
+  "transporterId": "94fb69d5-427d-456c-8f68-9d0b9989482f",
+
+  "origin": "Samba, Luanda",
+  "destination": "Cacuaco, Luanda",
+  "originState": "Luanda",
+  "destinationState": "Luanda",
+
+  "cargoType": "Materiais de construção",
+  "paymentMethod": "Transferência",
+  "price": 45000,
+
+  "requiresLoadingHelp": true,
+  "requiresUnloadingHelp": true,
+  "hasInsurance": false,
+
+  "weightKg": 1500,
+  "quantity": 100,
+  "lengthCm": 300,
+  "widthCm": 120,
+  "heightCm": 200,
+
+  "pickupDate": "2025-08-05T08:00:00.000Z",
+  "deliveryDate": "2025-08-07T18:00:00.000Z",
+
+  "originCoordinates": "-8.815678, 13.234123",
+  "destinationCoordinates": "-8.780123, 13.289567",
+  "estimatedDistance": 35.7,
+  "estimatedTime": 55.4,
+
+  "cancelationReason": null
+}
+
+
+### get all freights
+
+GET http://localhost:3000/freights 
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkMjJlNjE3MS1kYTdjLTQ5NDAtYTc2OS0wN2U2ZDJkNmZiMTEiLCJwcm9maWxlIjoiQURNSU4iLCJpYXQiOjE3NTQzMDQ1MjIsImV4cCI6MTc1NDM5MDkyMn0.IwTW5jQEE47O3EJKsmJ8ziKxOGyOAmuJtlM1-eMRhRQ
+
+### get available freights
+GET http://localhost:3000/freights/available 
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OWM1OTM1Ny04ZDliLTRkZGEtYjVjMy02MTNkMTRmNjk2NGIiLCJwcm9maWxlIjoiVFJBTlNQT1JURVIiLCJpYXQiOjE3NTQzMDQyNDIsImV4cCI6MTc1NDM5MDY0Mn0.JRhgkX-xI7n_zLkf15XegaLMHKIWohhN4qfiKcO_kNk
+
+### Accept Freight (Logged Driver)
+PATCH http://localhost:3000/freights/a2f41ca6-1d0a-4bf7-a2ed-b78b54b35add/accept
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OWM1OTM1Ny04ZDliLTRkZGEtYjVjMy02MTNkMTRmNjk2NGIiLCJwcm9maWxlIjoiVFJBTlNQT1JURVIiLCJpYXQiOjE3NTQzMDQyNDIsImV4cCI6MTc1NDM5MDY0Mn0.JRhgkX-xI7n_zLkf15XegaLMHKIWohhN4qfiKcO_kNk
+
+### Start Freight (Logged Driver)
+PATCH http://localhost:3000/freights/a2f41ca6-1d0a-4bf7-a2ed-b78b54b35add/start
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OWM1OTM1Ny04ZDliLTRkZGEtYjVjMy02MTNkMTRmNjk2NGIiLCJwcm9maWxlIjoiVFJBTlNQT1JURVIiLCJpYXQiOjE3NTQzMDQyNDIsImV4cCI6MTc1NDM5MDY0Mn0.JRhgkX-xI7n_zLkf15XegaLMHKIWohhN4qfiKcO_kNk
+
+### Finish Freight (Logged Driver)
+PATCH http://localhost:3000/freights/a2f41ca6-1d0a-4bf7-a2ed-b78b54b35add/finish
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OWM1OTM1Ny04ZDliLTRkZGEtYjVjMy02MTNkMTRmNjk2NGIiLCJwcm9maWxlIjoiVFJBTlNQT1JURVIiLCJpYXQiOjE3NTQzMDQyNDIsImV4cCI6MTc1NDM5MDY0Mn0.JRhgkX-xI7n_zLkf15XegaLMHKIWohhN4qfiKcO_kNk
+
+### Cancel Freight (Logged Driver)
+PATCH http://localhost:3000/freights/a2f41ca6-1d0a-4bf7-a2ed-b78b54b35add/cancel
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OWM1OTM1Ny04ZDliLTRkZGEtYjVjMy02MTNkMTRmNjk2NGIiLCJwcm9maWxlIjoiVFJBTlNQT1JURVIiLCJpYXQiOjE3NTQzMDQyNDIsImV4cCI6MTc1NDM5MDY0Mn0.JRhgkX-xI7n_zLkf15XegaLMHKIWohhN4qfiKcO_kNk
+### List Client, DRIVER OU ADMIN Freights (Logged)
+GET http://localhost:3000/freights/my
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OWM1OTM1Ny04ZDliLTRkZGEtYjVjMy02MTNkMTRmNjk2NGIiLCJwcm9maWxlIjoiVFJBTlNQT1JURVIiLCJpYXQiOjE3NTQzMDQyNDIsImV4cCI6MTc1NDM5MDY0Mn0.JRhgkX-xI7n_zLkf15XegaLMHKIWohhN4qfiKcO_kNk
+
+
+### Freights by id Routes
+GET http://localhost:3000/freights/KL-749837
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3Yjk4MDUyNS00YWZmLTRiMGEtYjAzMC1kMjllMjAwOTRiNTgiLCJwcm9maWxlIjoiQ0xJRU5UIiwiaWF0IjoxNzYxMjEwMjY0LCJleHAiOjE3NjEyOTY2NjR9.7USHoNGBkXMxSUGqExnTP7azHxKTd4Tjo4As2VsadJk
+
+# Vehicles Routes
+
+### Create Vehicle
+POST http://localhost:3000/vehicles
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OWM1OTM1Ny04ZDliLTRkZGEtYjVjMy02MTNkMTRmNjk2NGIiLCJwcm9maWxlIjoiVFJBTlNQT1JURVIiLCJpYXQiOjE3NTQzMDQyNDIsImV4cCI6MTc1NDM5MDY0Mn0.JRhgkX-xI7n_zLkf15XegaLMHKIWohhN4qfiKcO_kNk
+
+{
+  "brand": "Toyota",
+  "model": "Hilux",
+  "type": "Pickup",
+  "licensePlate": "LD-45-43-RT",
+  "loadCapacity": 1500,
+  "trailerType": "Reboque leve",
+  "baseProvince": "Luanda"
+}
+
+### Get Vehicle
+GET http://localhost:3000/vehicles/kk
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjODM2NjBhOS1jZjVlLTQyN2MtYjcxOS1hYjgxZWVhMTJkMDIiLCJwcm9maWxlIjoiVFJBTlNQT1JURVIiLCJpYXQiOjE3NjEzMDUyNDYsImV4cCI6MTc2MTM5MTY0Nn0.ZsqstFvUx4EOf6Hr4U2DVaGAa8Zd2yZg61vSekyTNJE
+
+
+# Reviwes Routes
+### Create Review
+POST http://localhost:3000/reviews
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiYmJhYjEzMS1iNWYyLTQyZDItYjdhMC0yNjc0ZjliZjFmMmUiLCJwcm9maWxlIjoiQ0xJRU5UIiwiaWF0IjoxNzUyNTUwMDMzLCJleHAiOjE3NTI2MzY0MzN9.gqJZxFsQK9SRQiTKEFFIZU0O7FHd3FZRo-zEmKDejEs
+
+{
+  "freightId": "3bdd75a3-0bbe-47b8-bc51-da454eb4400d",
+  "rating": 5,
+  "comment": "Ótimo serviço, recomendo!"
+}
+
+### List Reviews of Client
+GET http://localhost:3000/reviews
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiYmJhYjEzMS1iNWYyLTQyZDItYjdhMC0yNjc0ZjliZjFmMmUiLCJwcm9maWxlIjoiQ0xJRU5UIiwiaWF0IjoxNzUyNTUwMDMzLCJleHAiOjE3NTI2MzY0MzN9.gqJZxFsQK9SRQiTKEFFIZU0O7FHd3FZRo-zEmKDejEs
+
+### List Reviews of Driver
+GET http://localhost:3000/reviews/received
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1NDMzOWJhMC1mMjMzLTQwZTMtODZiNS0wMDRhYWU5MTZmYWMiLCJwcm9maWxlIjoiRFJJVkVSIiwiaWF0IjoxNzUyNTUyMzU2LCJleHAiOjE3NTI2Mzg3NTZ9.jjrxb6OteH-WQy3MGRWGa45uzrnCH-FPP2i283lfuUo
+
+### List all Reviews with Filters - Admin (with optional filters)
+GET http://localhost:3000/reviews/admin?clientId=bbbab131-b5f2-42d2-b7a0-2674f9bf1f2e&startDate=2024-01-01&endDate=2024-12-31
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1ZjgxMWQ3Zi01OTgzLTRmMTAtODc1Mi0xMmFmOTE2N2RmYjciLCJwcm9maWxlIjoiQURNSU4iLCJpYXQiOjE3NTI1NTI2NjEsImV4cCI6MTc1MjYzOTA2MX0.gw9qLXoYuGuWrcDn87cm0E2XTv6DUlaKwfgCNNlrqjc
+
+
+### List all Reviews with Filters - Admin (without filters) 
+GET http://localhost:3000/reviews/admin
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1ZjgxMWQ3Zi01OTgzLTRmMTAtODc1Mi0xMmFmOTE2N2RmYjciLCJwcm9maWxlIjoiQURNSU4iLCJpYXQiOjE3NTI1NTYyMjYsImV4cCI6MTc1MjY0MjYyNn0.jeeBKd4dPLSgO549dPVQWP-mdifeUqA6ztxaO0ySUvQ
+
+
+### Create Tracking
+POST http://localhost:3000/tracking
+Content-Type: application/json
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI1NDMzOWJhMC1mMjMzLTQwZTMtODZiNS0wMDRhYWU5MTZmYWMiLCJwcm9maWxlIjoiRFJJVkVSIiwiaWF0IjoxNzUyNjI3MDI4LCJleHAiOjE3NTI3MTM0Mjh9.9J_GiD9ovgkTrUTFN29fVHjWF793wihtcxm4rj0x_e4
+
+{
+  "vehicleId": "e4e33b2e-0026-4c4f-88cb-50797a115dd5",
+  "latitude": -8.8392,
+  "longitude": 13.2894,
+  "speed": 60,
+  "direction": "Norte",
+  "isAvailable": true
+}
+
+### Get Latest Tracking by Vehicle
+GET http://localhost:3000/tracking/e4e33b2e-0026-4c4f-88cb-50797a115dd5
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiYmJhYjEzMS1iNWYyLTQyZDItYjdhMC0yNjc0ZjliZjFmMmUiLCJwcm9maWxlIjoiQ0xJRU5UIiwiaWF0IjoxNzUyNjYwMTE0LCJleHAiOjE3NTI3NDY1MTR9.NudePZ48VRf_PJYUubbMkLBbEZO78o0S7Tv9A5AgsvU
+
+### Get All Available Trackings
+GET http://localhost:3000/tracking
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiYmJhYjEzMS1iNWYyLTQyZDItYjdhMC0yNjc0ZjliZjFmMmUiLCJwcm9maWxlIjoiQ0xJRU5UIiwiaWF0IjoxNzUyNjYwMTE0LCJleHAiOjE3NTI3NDY1MTR9.NudePZ48VRf_PJYUubbMkLBbEZO78o0S7Tv9A5AgsvU
