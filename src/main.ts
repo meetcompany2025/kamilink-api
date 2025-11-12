@@ -13,6 +13,7 @@ async function bootstrap() {
       'http://localhost:3000',
       'http://localhost:3001',
       'http://kamilink-front.vercel.app',
+      'https://kamilink-front.vercel.app',
     ],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
     credentials: true,
