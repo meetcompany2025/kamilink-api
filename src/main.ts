@@ -12,7 +12,7 @@ async function bootstrap() {
     origin: [
       'http://localhost:3000',
       'http://localhost:3001',
-      'https://kamilink-front.vercel.app',
+      'http://kamilink-front.vercel.app',
     ],
     methods: 'GET,HEAD,PUT,PATCH,POST,DELETE,OPTIONS',
     credentials: true,
@@ -25,9 +25,9 @@ async function bootstrap() {
     .build();
 
   const document = SwaggerModule.createDocument(app, config);
-  SwaggerModule.setup('docs', app, document); 
+  SwaggerModule.setup('docs', app, document);
 
-   app.enableShutdownHooks(); // ⭐ necessário para onModuleDestroy funcionar
+  app.enableShutdownHooks(); // ⭐ necessário para onModuleDestroy funcionar
 
   // const PORT = process.env.PORT || 3001;
   // await app.listen(PORT, '0.0.0.0');
