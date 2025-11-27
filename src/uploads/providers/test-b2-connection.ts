@@ -44,3 +44,6 @@
 
 // // Execute o teste
 // testB2Connection();
+
+// DATABASE_URL = postgresql://postgres.ulrcdggcvblrvresdhbh:oremonogatare01@aws-1-us-east-1.pooler.supabase.com:6543/postgres?pgbouncer=true
+// DIRECT_URL=postgresql://postgres.ulrcdggcvblrvresdhbh:oremonogatare01@aws-1-us-east-1.pooler.supabase.com:5432/postgres

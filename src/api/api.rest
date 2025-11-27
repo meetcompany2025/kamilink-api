@@ -38,7 +38,6 @@ Content-Type: application/json
   "provincia": "Huambo",
   "vehicleTypes": ["Caminhão"],
   "experienceYears": 3,
-  "licensePlate": "HU-45-67-ZZ",
   "driverLicense": "LT9988776655"
 }
 
@@ -62,8 +61,8 @@ Content-Type: application/json
 GET http://localhost:3000/users 
 Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkZGMwODNkZC02NWYzLTQxMGYtYmRiMS05N2ZiYjRlMzEyYzQiLCJwcm9maWxlIjoiVFJBTlNQT1JURVIiLCJpYXQiOjE3NjQxMTQ5MTgsImV4cCI6MTc2NDIwMTMxOH0.1iyw38uNdRDEf5uWKnkTk-excJGHRXMKdY-nQP8RjSk
 ### get user by id
-GET http://localhost:3000/users/ddc083dd-65f3-410f-bdb1-97fbb4e312c4
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkZGMwODNkZC02NWYzLTQxMGYtYmRiMS05N2ZiYjRlMzEyYzQiLCJwcm9maWxlIjoiVFJBTlNQT1JURVIiLCJpYXQiOjE3NjQxMTQ5MTgsImV4cCI6MTc2NDIwMTMxOH0.1iyw38uNdRDEf5uWKnkTk-excJGHRXMKdY-nQP8RjSk
+GET http://localhost:3000/users/6020bd04-8128-4c1d-9664-9ddd344c455d
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2MDIwYmQwNC04MTI4LTRjMWQtOTY2NC05ZGRkMzQ0YzQ1NWQiLCJwcm9maWxlIjoiVFJBTlNQT1JURVIiLCJpYXQiOjE3NjQxMTg3OTksImV4cCI6MTc2NDIwNTE5OX0.n5usn4eiETcVZwXnw9_bZ29eeOHwxFq6Q0fSK4_R-Sg
 
 ### auth 
 GET http://localhost:3000/auth/me
@@ -75,7 +74,7 @@ POST http://localhost:3000/auth/login
 Content-Type: application/json
 
 {
-    "email": "meetcompany2025@gmail.com",
+    "email": "muanza787@gmail.com",
     "password": "12345678@1"
 }
 
@@ -156,9 +155,9 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OWM1OTM1N
 
 
 ### Freights by id Routes
-GET http://localhost:3000/freights/KL-749837
+GET http://localhost:3000/freights/KL-101708
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI3Yjk4MDUyNS00YWZmLTRiMGEtYjAzMC1kMjllMjAwOTRiNTgiLCJwcm9maWxlIjoiQ0xJRU5UIiwiaWF0IjoxNzYxMjEwMjY0LCJleHAiOjE3NjEyOTY2NjR9.7USHoNGBkXMxSUGqExnTP7azHxKTd4Tjo4As2VsadJk
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI4YzhiMDI0NS03MGQ5LTQwMzMtODZlNS04MjE0YzEyZTZhYzMiLCJwcm9maWxlIjoiQ0xJRU5UIiwiaWF0IjoxNzY0MTYwMTQ5LCJleHAiOjE3NjQyNDY1NDl9.RrnG8tNVlxhixwd5_cGeNzhE43ISz-RE7ocOX3O_BDc
 
 # Vehicles Routes
 
