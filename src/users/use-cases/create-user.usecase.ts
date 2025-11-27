@@ -13,7 +13,7 @@ import { CreateClientUseCase } from 'src/clients/use-cases/create-client.usecase
 import { CreateTransporterUseCase } from 'src/transporters/use-cases/create-transporter.usecase';
 import { GetPersonByDocumentNumberUseCase } from 'src/people/use-cases/get-person-by-document-number.usecase';
 import { GetTransporterByDriverLicenseUseCase } from 'src/transporters/use-cases/get-transporter-by-driver-license.usecase';
-import { GetTransporterByLicensePlateUseCase } from 'src/transporters/use-cases/get-transporter-by-license-plate.usecase';
+// import { GetTransporterByLicensePlateUseCase } from 'src/transporters/use-cases/get-transporter-by-license-plate.usecase';
 import { GetClientByNIFUseCase } from 'src/clients/use-cases/get-client-by-nif.usecase';
 import { SendEmailConfirmationUseCase } from 'src/email-confirmation/use-cases/send-email-confirmation.usecase';
 
@@ -30,7 +30,7 @@ export class CreateUserUseCase {
     private readonly getClientByNIFUseCase: GetClientByNIFUseCase,
 
     private readonly getTransporterByDriverLicenseUseCase: GetTransporterByDriverLicenseUseCase,
-    private readonly getTransporterByLicensePlateUseCase: GetTransporterByLicensePlateUseCase,
+    // private readonly getTransporterByLicensePlateUseCase: GetTransporterByLicensePlateUseCase,
     private readonly createTransporterUseCase: CreateTransporterUseCase,
 
     private readonly sendEmailConfirmationUseCase: SendEmailConfirmationUseCase,
@@ -53,12 +53,12 @@ export class CreateUserUseCase {
       await this.getClientByNIFUseCase.execute(dto.nif!);
     }
 
-    if (dto.profile === UserProfile.TRANSPORTER) {
-      await this.getTransporterByDriverLicenseUseCase.execute(
-        dto.driverLicense!,
-      );
-      await this.getTransporterByLicensePlateUseCase.execute(dto.licensePlate!);
-    }
+    // if (dto.profile === UserProfile.TRANSPORTER) {
+    //   await this.getTransporterByDriverLicenseUseCase.execute(
+    //     dto.driverLicense!,
+    //   );
+    //   await this.getTransporterByLicensePlateUseCase.execute(dto.licensePlate!);
+    // }
 
     // create user
     const user = await this.userRepository.create({

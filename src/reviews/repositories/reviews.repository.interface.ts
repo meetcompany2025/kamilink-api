@@ -4,7 +4,7 @@ import { CreateReviewDto } from '../dto/create-review.dto';
 export const REVIEWS_REPOSITORY = 'REVIEWS_REPOSITORY';
 
 export abstract class ReviewsRepositoryInterface {
-  abstract create(data: CreateReviewDto): Promise<Review>;
+  abstract create(data: CreateReviewDto, userId: string): Promise<Review>;
   abstract findByFreightId(freightId: string): Promise<Review | null>;
   abstract findManyByClientId(clientId: string): Promise<Review[]>;
   abstract findManyByDriverId(driverId: string): Promise<Review[]>;

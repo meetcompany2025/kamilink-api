@@ -21,9 +21,9 @@ export class CancelFreightUseCase {
     private freightsRepository: FreightsRepositoryInterface,
     private registerStatusChange: RegisterFreightStatusChangeUseCase,
 
-    @Inject(CreateNotificationUseCase) // Importa o caso de uso de notificação
+    @Inject(CreateNotificationUseCase)
     private createNotificationUseCase: CreateNotificationUseCase,
-  ) {}
+  ) { }
 
   async execute(
     freightId: string,
@@ -31,44 +31,48 @@ export class CancelFreightUseCase {
     userProfile: UserProfile,
     reason: string,
   ) {
+    // Busca o frete pelo ID
     const freight = await this.freightsRepository.findById(freightId);
 
-    if (!freight) throw new NotFoundException('Frete não encontrado.');
+    // Verifica se o frete existe
+    if (!freight) {
+      throw new NotFoundException('Frete não encontrado.');
+    }
 
-    // Regras de cancelamento
+    // REGRA: Apenas CLIENTE e ADMIN podem cancelar fretes
+    if (userProfile !== 'CLIENT' && userProfile !== 'ADMIN') {
+      throw new ForbiddenException('Apenas clientes e administradores podem cancelar fretes.');
+    }
+
+    // REGRA: Cliente só pode cancelar seus próprios fretes
     if (userProfile === 'CLIENT' && freight.clientId !== userId) {
-      throw new ForbiddenException('Você não pode cancelar este frete. 1');
-    }
-    if (userProfile === 'TRANSPORTER' && freight.transporterId !== userId) {
-      throw new ForbiddenException('Você não pode cancelar este frete. 2');
+      throw new ForbiddenException('Você não pode cancelar este frete.');
     }
 
-    // Restrições de status conforme o perfil
-    if (userProfile === 'CLIENT' && freight.status !== FreightStatus.PENDING) {
-      throw new BadRequestException('Só é possível cancelar fretes pendentes.');
-    }
-    if (
-      userProfile === 'TRANSPORTER' &&
-      freight.status !== FreightStatus.IN_PROGRESS
-    ) {
+    // REGRA PRINCIPAL: Só é possível cancelar fretes com status PENDING
+    // Esta regra se aplica tanto para CLIENTE quanto para ADMIN
+    if (freight.status !== FreightStatus.PENDING) {
       throw new BadRequestException(
-        'Só é possível cancelar fretes em andamento.',
+        'Só é possível cancelar fretes com status PENDENTE. ' +
+        'Uma vez que o frete tenha sido aceito ou esteja em andamento, ' +
+        'não pode mais ser cancelado por ninguém.'
       );
     }
 
-    // Admin pode cancelar qualquer frete
+    // Atualiza o status do frete para CANCELED
     const freightUpdate = await this.freightsRepository.updateStatus(
       freightId,
       FreightStatus.CANCELED,
       reason,
     );
 
-    // Registrar status "COMPLETED"
+    // Registra a mudança de status no histórico
     await this.registerStatusChange.execute({
       freightId,
       newStatus: FreightStatus.CANCELED,
     });
 
+    // Prepara e envia notificação de cancelamento
     const template = notificationTemplates.canceledFreight({
       freightId: freight.id,
     });

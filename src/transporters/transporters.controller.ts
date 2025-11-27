@@ -11,7 +11,7 @@ import { CreateTransporterDto } from './dto/create-transporter.dto';
 import { UpdateTransporterDto } from './dto/update-transporter.dto';
 import { GetAllTransportersUseCase } from './use-cases/get-all-transporters.usecase';
 import { GetTransporterByDriverLicenseUseCase } from './use-cases/get-transporter-by-driver-license.usecase';
-import { GetTransporterByLicensePlateUseCase } from './use-cases/get-transporter-by-license-plate.usecase';
+// import { GetTransporterByLicensePlateUseCase } from './use-cases/get-transporter-by-license-plate.usecase';
 import { GetTransporterByIdUseCase } from './use-cases/get-transporter-by-id.usecase';
 
 @Controller('transporters')
@@ -20,8 +20,8 @@ export class TransportersController {
     private getAllTransportersUseCase: GetAllTransportersUseCase,
     private getTransporterByIdUseCase: GetTransporterByIdUseCase,
     private getTransporterByDriverLicenceUseCase: GetTransporterByDriverLicenseUseCase,
-    private getTransporterByLicencePlateUseCase: GetTransporterByLicensePlateUseCase,
-  ) {}
+    // private getTransporterByLicencePlateUseCase: GetTransporterByLicensePlateUseCase,
+  ) { }
 
   @Get()
   findAll() {
@@ -33,10 +33,10 @@ export class TransportersController {
     return this.getTransporterByDriverLicenceUseCase.execute(id);
   }
 
-  @Get('plate/:id')
-  findByPlate(@Param('id') id: string) {
-    return this.getTransporterByLicencePlateUseCase.execute(id);
-  }
+  // @Get('plate/:id')
+  // findByPlate(@Param('id') id: string) {
+  //   return this.getTransporterByLicencePlateUseCase.execute(id);
+  // }
 
   @Get(':id')
   findById(@Param('id') id: string) {

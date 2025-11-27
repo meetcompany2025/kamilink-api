@@ -48,7 +48,7 @@ POST http://localhost:3000/users
 Content-Type: application/json
 
 {
-  "email": "admin@example.c om",
+  "email": "admin@example.com",
   "password": "123456",
   "profile": "ADMIN",
   "fullName": "Administrador Geral",
@@ -60,11 +60,10 @@ Content-Type: application/json
 
 ### get users 
 GET http://localhost:3000/users 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJiYmJhYjEzMS1iNWYyLTQyZDItYjdhMC0yNjc0ZjliZjFmMmUiLCJwcm9maWxlIjoiQ0xJRU5UIiwiaWF0IjoxNzUyNTUwMDMzLCJleHAiOjE3NTI2MzY0MzN9.gqJZxFsQK9SRQiTKEFFIZU0O7FHd3FZRo-zEmKDejEs
-
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkZGMwODNkZC02NWYzLTQxMGYtYmRiMS05N2ZiYjRlMzEyYzQiLCJwcm9maWxlIjoiVFJBTlNQT1JURVIiLCJpYXQiOjE3NjQxMTQ5MTgsImV4cCI6MTc2NDIwMTMxOH0.1iyw38uNdRDEf5uWKnkTk-excJGHRXMKdY-nQP8RjSk
 ### get user by id
-GET http://localhost:3000/users/d28b20f8-112e-495b-9bf4-3ed0347b22dd 
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkMjhiMjBmOC0xMTJlLTQ5NWItOWJmNC0zZWQwMzQ3YjIyZGQiLCJwcm9maWxlIjoiQ0xJRU5UIiwiaWF0IjoxNzUxMzg1NTE0LCJleHAiOjE3NTE0NzE5MTR9.yonVq5x-JBQ8NyGsagV-SrIlhJh2xSam9FWqryZ3zs4
+GET http://localhost:3000/users/ddc083dd-65f3-410f-bdb1-97fbb4e312c4
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkZGMwODNkZC02NWYzLTQxMGYtYmRiMS05N2ZiYjRlMzEyYzQiLCJwcm9maWxlIjoiVFJBTlNQT1JURVIiLCJpYXQiOjE3NjQxMTQ5MTgsImV4cCI6MTc2NDIwMTMxOH0.1iyw38uNdRDEf5uWKnkTk-excJGHRXMKdY-nQP8RjSk
 
 ### auth 
 GET http://localhost:3000/auth/me
@@ -76,7 +75,7 @@ POST http://localhost:3000/auth/login
 Content-Type: application/json
 
 {
-    "email": "ismaelmuanza99@gmail.com",
+    "email": "meetcompany2025@gmail.com",
     "password": "12345678@1"
 }
 
@@ -178,10 +177,10 @@ Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiI2OWM1OTM1N
   "baseProvince": "Luanda"
 }
 
-### Get Vehicle
-GET http://localhost:3000/vehicles/kk
+### Get Vehicle by Id
+GET http://localhost:3000/vehicles/917298c8-2dba-4dd4-ba50-5d064ba52887
 Content-Type: application/json
-Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJjODM2NjBhOS1jZjVlLTQyN2MtYjcxOS1hYjgxZWVhMTJkMDIiLCJwcm9maWxlIjoiVFJBTlNQT1JURVIiLCJpYXQiOjE3NjEzMDUyNDYsImV4cCI6MTc2MTM5MTY0Nn0.ZsqstFvUx4EOf6Hr4U2DVaGAa8Zd2yZg61vSekyTNJE
+Authorization: Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJzdWIiOiJkZGMwODNkZC02NWYzLTQxMGYtYmRiMS05N2ZiYjRlMzEyYzQiLCJwcm9maWxlIjoiVFJBTlNQT1JURVIiLCJpYXQiOjE3NjM4MTk1MjAsImV4cCI6MTc2MzkwNTkyMH0.UJtdFvK0xn1_Y471pohie38xZqAADZhKTqnj5RGa_QQ
 
 
 # Reviwes Routes

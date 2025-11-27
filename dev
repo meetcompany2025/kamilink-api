@@ -2,3 +2,129 @@
 > kamilink-api@1.0.0 start
 > nest start
 
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[NestFactory] [39m[32mStarting Nest application...[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mMailModule dependencies initialized[39m[38;5;3m +197ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mMulterModule dependencies initialized[39m[38;5;3m +2ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +142ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mJwtModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAppModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mDiscoveryModule dependencies initialized[39m[38;5;3m +2ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mPeopleModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mScheduleModule dependencies initialized[39m[38;5;3m +2ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mClientsModule dependencies initialized[39m[38;5;3m +2ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mTransportersModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mEmailConfirmationModule dependencies initialized[39m[38;5;3m +2ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mFreightStatusHistoryModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mReviewsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mFreightLocationTrackingModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mNotificationModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mUploadsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mVehiclesModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mAuthModule dependencies initialized[39m[38;5;3m +1ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mFreightsModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[InstanceLoader] [39m[32mUsersModule dependencies initialized[39m[38;5;3m +0ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[WebSocketsController] [39m[32mFreightLocationTrackingGateway subscribed to the "freight.location.update" message[39m[38;5;3m +80ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[WebSocketsController] [39m[32mFreightLocationTrackingGateway subscribed to the "freight.location.request" message[39m[38;5;3m +1ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[WebSocketsController] [39m[32mFreightLocationTrackingGateway subscribed to the "freight.room.join" message[39m[38;5;3m +0ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAppController {/}:[39m[38;5;3m +2ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/hello, GET} route[39m[38;5;3m +2ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mUsersController {/users}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/dashboard, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/users/:id, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mClientsController {/clients}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/clients, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/clients/nif/:id, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/clients/:id, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mTransportersController {/transporters}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/transporters, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/transporters/license/:id, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/transporters/plate/:id, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/transporters/:id, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mEmailConfirmationController {/email-confirmation}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/email-confirmation/confirm, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/email-confirmation/confirm, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/email-confirmation/resend, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mAuthController {/auth}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/login, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/me, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/logout, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/forgot-password, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/auth/reset-password, PATCH} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mFreightsController {/freights}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/freights, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/freights/available, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/freights, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/freights/client/my, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/freights/:id/start, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/freights/:id/finish, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/freights/:id, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/freights/:id, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/freights/:id/accept, PATCH} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/freights/:id/cancel, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mFreightStatusNotificationController {/freight-status-history}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/freight-status-history, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mVehiclesController {/vehicles}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/vehicles, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/vehicles/register, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/vehicles/my, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/vehicles/:id, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mUploadController {/uploads}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/uploads, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/uploads/user/:userId, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/uploads/vehicle/:vehicleId, GET} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/uploads/freight/:freightId, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/uploads/:id/view, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/uploads/:id, DELETE} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mReviewsController {/reviews}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/reviews, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/reviews, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/reviews/received, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/reviews/admin, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mFreightLocationTrackingController {/freight-location-tracking}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/freight-location-tracking/:freightId, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/freight-location-tracking/location, POST} route[39m[38;5;3m +1ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[RoutesResolver] [39m[32mNotificationController {/notification}:[39m[38;5;3m +0ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/notification, POST} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/notification/user, GET} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/notification/:id/read, PATCH} route[39m[38;5;3m +0ms[39m
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:41 [32m    LOG[39m [38;5;3m[RouterExplorer] [39m[32mMapped {/notification/user/unread/count, GET} route[39m[38;5;3m +0ms[39m
+✅ Prisma conectado com sucesso!
+✅ Prisma conectado com sucesso!
+✅ Prisma conectado com sucesso!
+✅ Prisma conectado com sucesso!
+✅ Prisma conectado com sucesso!
+✅ Prisma conectado com sucesso!
+✅ Prisma conectado com sucesso!
+✅ Prisma conectado com sucesso!
+✅ Prisma conectado com sucesso!
+✅ Prisma conectado com sucesso!
+✅ Prisma conectado com sucesso!
+✅ Prisma conectado com sucesso!
+✅ Prisma conectado com sucesso!
+[32m[Nest] 1304  - [39m22/11/2025, 16:56:42 [32m    LOG[39m [38;5;3m[NestApplication] [39m[32mNest application successfully started[39m[38;5;3m +895ms[39m
+Pedidos expirados, cancelados
+[32m[Nest] 1304  - [39m22/11/2025, 17:00:00 [32m    LOG[39m [38;5;3m[CancelExpiredFreightsUseCase] [39m[32mNo expired freights to cancel.[39m
+Pedidos expirados, cancelados
+[32m[Nest] 1304  - [39m22/11/2025, 19:02:49 [32m    LOG[39m [38;5;3m[CancelExpiredFreightsUseCase] [39m[32mNo expired freights to cancel.[39m
+Pedidos expirados, cancelados
+[32m[Nest] 1304  - [39m22/11/2025, 20:00:00 [32m    LOG[39m [38;5;3m[CancelExpiredFreightsUseCase] [39m[32mNo expired freights to cancel.[39m
+Pedidos expirados, cancelados
+[32m[Nest] 1304  - [39m22/11/2025, 21:06:04 [32m    LOG[39m [38;5;3m[CancelExpiredFreightsUseCase] [39m[32mNo expired freights to cancel.[39m
+Pedidos expirados, cancelados
+[32m[Nest] 1304  - [39m23/11/2025, 08:28:32 [32m    LOG[39m [38;5;3m[CancelExpiredFreightsUseCase] [39m[32mNo expired freights to cancel.[39m
+Deseja finalizar o arquivo em lotes (S/N)? 🛑 Prisma desconectado.
+🛑 Prisma desconectado.
+🛑 Prisma desconectado.
+🛑 Prisma desconectado.
+🛑 Prisma desconectado.
+🛑 Prisma desconectado.
+🛑 Prisma desconectado.
+
+🛑 Prisma desconectado.
+🛑 Prisma desconectado.
+🛑 Prisma desconectado.
+🛑 Prisma desconectado.
+🛑 Prisma desconectado.
+🛑 Prisma desconectado.

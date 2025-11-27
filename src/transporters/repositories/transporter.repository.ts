@@ -7,7 +7,7 @@ import { UpdateTransporterDto } from '../dto/update-transporter.dto';
 
 @Injectable()
 export class TransportersRepository implements TransporterRepositoryInterface {
-  constructor(private readonly prisma: PrismaService) {}
+  constructor(private readonly prisma: PrismaService) { }
 
   // Create a new transporter
   async create(data: Prisma.TransporterCreateInput) {
@@ -24,13 +24,13 @@ export class TransportersRepository implements TransporterRepositoryInterface {
   }
 
   // Find a transporter by their license plate
-  async findByLicensePlate(licensePlate: string) {
-    const transporter = await this.prisma.transporter.findUnique({
-      where: { licensePlate },
-    });
+  // async findByLicensePlate(licensePlate: string) {
+  //   const transporter = await this.prisma.transporter.findUnique({
+  //     where: { licensePlate },
+  //   });
 
-    return transporter;
-  }
+  //   return transporter;
+  // }
 
   // Find a transporter by their license plate
   async findById(id: string) {

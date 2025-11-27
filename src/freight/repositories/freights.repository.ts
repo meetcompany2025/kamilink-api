@@ -9,7 +9,7 @@ import { randomUUID } from 'node:crypto';
 
 @Injectable()
 export class FreightsRepository implements FreightsRepositoryInterface {
-  constructor(private prisma: PrismaService) {}
+  constructor(private prisma: PrismaService) { }
 
   async create(data: CreateFreightDto, clientId: string) {
     const freight = this.prisma.freight.create({
@@ -39,6 +39,8 @@ export class FreightsRepository implements FreightsRepositoryInterface {
     const freight = await this.prisma.freight.findUnique({
       where: { id },
       include: {
+        Image: true,
+        Review: true,
         client: {
           select: {
             person: true,

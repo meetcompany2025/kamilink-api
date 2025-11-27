@@ -10,7 +10,6 @@ datasource db {
   url       = env("DATABASE_URL")
   directUrl = env("DIRECT_URL")
 }
-        
 
 enum UserProfile {
   CLIENT
@@ -118,7 +117,7 @@ model Transporter {
   experienceYears Int?
 
   // Campos específicos do transportador
-  licensePlate  String  @unique
+  // licensePlate  String  @unique
   driverLicense String  @unique
   availability  Boolean @default(true)
 
@@ -127,6 +126,12 @@ model Transporter {
 
   @@index([userId])
   @@map("transporters")
+}
+
+enum TransporterDocumentType {
+  BI // Bilhete de Identidade
+  NIF // NIF
+  DRIVER_LICENSE // Carta de Condução
 }
 
 model EmailConfirmationToken {
@@ -283,11 +288,12 @@ model Tracking {
 }
 
 model Review {
-  id        String   @id @default(uuid())
+  id        String  @id @default(uuid())
   rating    Int // Nota de 1 a 5
   comment   String? // Comentário opcional
   freightId String
-  freight   Freight  @relation(fields: [freightId], references: [id])
+  freight   Freight @relation(fields: [freightId], references: [id])
+
   createdAt DateTime @default(now())
   User      User?    @relation(fields: [userId], references: [id])
   userId    String?
@@ -296,15 +302,17 @@ model Review {
 }
 
 model Image {
-  id        String    @id @default(uuid())
-  type      ImageType
-  path      String
-  filename  String
-  userId    String?   @map("user_id")
-  vehicleId String?   @map("vehicle_id")
-  freightId String?   @map("freight_id")
-  createdAt DateTime  @default(now())
-  updatedAt DateTime  @updatedAt
+  id                      String                   @id @default(uuid())
+  type                    ImageType
+  documentType            VehicleDocumentType? // NOVO CAMPO: "TITLE", "INSURANCE", "IPO", "IVM"
+  documentTypeTransporter TransporterDocumentType?
+  path                    String
+  filename                String
+  userId                  String?                  @map("user_id")
+  vehicleId               String?                  @map("vehicle_id")
+  freightId               String?                  @map("freight_id")
+  createdAt               DateTime                 @default(now())
+  updatedAt               DateTime                 @updatedAt
 
   user    User?    @relation(fields: [userId], references: [id])
   vehicle Vehicle? @relation(fields: [vehicleId], references: [id])
@@ -321,6 +329,13 @@ enum ImageType {
   VEHICLE_IMAGE
   VEHICLE_DOCUMENT
   FREIGHT_IMAGE
+}
+
+enum VehicleDocumentType {
+  TITLE
+  INSURANCE
+  IPO
+  IVM
 }
 
 model Notification {

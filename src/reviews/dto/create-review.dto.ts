@@ -2,11 +2,12 @@ import { ApiProperty } from '@nestjs/swagger';
 import { IsInt, IsOptional, IsString, IsUUID, Max, Min } from 'class-validator';
 
 export class CreateReviewDto {
-  @ApiProperty({
-    description: 'ID do frete que será avaliado',
-    example: 'd290f1ee-6c54-4b01-90e6-d701748f0851',
-  })
-  @IsUUID()
+  // @ApiProperty({
+  //   description: 'ID do frete que será avaliado',
+  //   example: 'd290f1ee-6c54-4b01-90e6-d701748f0851',
+  // })
+  @IsString()
+  // @IsUUID()
   freightId: string;
 
   @ApiProperty({

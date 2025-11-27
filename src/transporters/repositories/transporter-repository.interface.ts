@@ -8,9 +8,9 @@ export abstract class TransporterRepositoryInterface {
   abstract findByDriverLicence(
     driverLicense: string,
   ): Promise<Transporter | null>;
-  abstract findByLicensePlate(
-    licensePlate: string,
-  ): Promise<Transporter | null>;
+  // abstract findByLicensePlate(
+  //   licensePlate: string,
+  // ): Promise<Transporter | null>;
   abstract findById(id: string): Promise<any | null>;
   abstract findAll(): Promise<any | null>;
   abstract update(

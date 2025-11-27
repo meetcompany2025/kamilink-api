@@ -6,7 +6,7 @@ import { UpdateUserDto } from '../dto/update-user.dto';
 
 @Injectable()
 export class UsersRepository implements UsersRepositoryInterface {
-  constructor(private prisma: PrismaService) {}
+  constructor(private prisma: PrismaService) { }
 
   async create(data: Prisma.UserCreateInput) {
     return await this.prisma.user.create({ data });
@@ -35,6 +35,9 @@ export class UsersRepository implements UsersRepositoryInterface {
       include: {
         person: true,
       },
+      omit: {
+        password: true,
+      }
     });
 
     return users;
@@ -43,7 +46,10 @@ export class UsersRepository implements UsersRepositoryInterface {
   async findById(id: string) {
     const user = await this.prisma.user.findUnique({
       where: { id },
-      include: { person: true, client: true, transporter: true },
+      include: { person: true, client: true, transporter: true, images: true },
+      omit: {
+        password: true,
+      }
     });
 
     return user;

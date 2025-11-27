@@ -8,4 +8,5 @@ export interface VehiclesRepositoryInterface {
   findAll(): Promise<Vehicle[]>;
   findOne(id: string): Promise<Vehicle | null>;
   findByUser(userId: string): Promise<Vehicle[]>;
+  updateStatus(id: string, status: string): Promise<Vehicle>;
 }

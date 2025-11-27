@@ -1,14 +1,18 @@
+// src/uploads/use-cases/delete-image.use-case.ts
 import { Inject, Injectable, NotFoundException } from '@nestjs/common';
-import { IMAGES_REPOSITORY, ImagesRepositoryInterface } from 'src/uploads/repositories/images.repository.interface';
-import { unlink } from 'fs/promises';
-import { join } from 'path';
+import { IMAGES_REPOSITORY, ImagesRepositoryInterface } from '../repositories/images.repository.interface';
+import { STORAGE_PROVIDER } from '../upload.tokens';
+import { StorageProvider } from '../providers/storage.provider';
 
 @Injectable()
 export class DeleteImageUseCase {
   constructor(
     @Inject(IMAGES_REPOSITORY)
     private readonly imagesRepository: ImagesRepositoryInterface,
-  ) {}
+
+    @Inject(STORAGE_PROVIDER)
+    private readonly storageProvider: StorageProvider, // ✅ AGORA USA O PROVIDER
+  ) { }
 
   async execute(id: string): Promise<void> {
     const image = await this.imagesRepository.findById(id);
@@ -16,13 +20,10 @@ export class DeleteImageUseCase {
       throw new NotFoundException('Imagem não encontrada');
     }
 
-    await this.imagesRepository.deleteById(id);
+    // ✅ DELETA DO STORAGE (B2 ou Local) - COMPATÍVEL COM AMBOS
+    await this.storageProvider.delete(image.path);
 
-    const filePath = join(process.cwd(), image.path);
-    try {
-      await unlink(filePath);
-    } catch {
-      // Arquivo já não existia — não lançar erro
-    }
+    // ✅ DELETA DO BANCO
+    await this.imagesRepository.deleteById(id);
   }
 }

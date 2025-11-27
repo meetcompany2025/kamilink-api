@@ -5,7 +5,7 @@ import { PrismaService } from 'src/database/prisma.service';
 
 @Injectable()
 export class VehiclesRepository implements VehiclesRepositoryInterface {
-  constructor(private prisma: PrismaService) {}
+  constructor(private prisma: PrismaService) { }
   /**
    * Creates a new vehicle in the database.
    * @param userId - The ID of the user creating the vehicle.
@@ -14,7 +14,11 @@ export class VehiclesRepository implements VehiclesRepositoryInterface {
    */
   async create(userId: string, dto: CreateVehicleDto) {
     return await this.prisma.vehicle.create({
-      data: { ...dto, userId },
+      data: {
+        ...dto,
+        userId,
+        status: 'PENDENTE', // define aqui no prisma, não no DTO
+      },
     });
   }
 
@@ -29,10 +33,20 @@ export class VehiclesRepository implements VehiclesRepositoryInterface {
   }
 
   async findOne(id: string) {
-   const vehicle = await this.prisma.vehicle.findUnique({
-    where: { id },
-   });
-   
-   return vehicle;
+    const vehicle = await this.prisma.vehicle.findUnique({
+      where: { id },
+      include: {
+        Image: true
+      }
+    });
+
+    return vehicle;
+  }
+
+  async updateStatus(id: string, status: string) {
+    return this.prisma.vehicle.update({
+      where: { id },
+      data: { status },
+    });
   }
 }

@@ -5,7 +5,8 @@ export const USERS_REPOSITORY = 'USERS_REPOSITORY';
 
 export abstract class UsersRepositoryInterface {
   abstract create(data: Prisma.UserCreateInput): Promise<User>;
-  abstract findAll(): Promise<User[]>;
+  abstract findAll(): Promise<any>;
+  // abstract findAll(): Promise<User[]>;
   abstract findByEmail(email: string): Promise<User | null>;
   abstract findByPhone(phone: string): Promise<User | null>;
   abstract findById(id: string): Promise<any>;

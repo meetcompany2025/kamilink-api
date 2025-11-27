@@ -40,6 +40,6 @@ export class CreateReviewUseCase {
       throw new BadRequestException('Este frete já foi avaliado.');
     }
 
-    return this.reviewsRepo.create(dto);
+    return this.reviewsRepo.create(dto, userId);
   }
 }

@@ -33,4 +33,4 @@ import { TransportersModule } from './transporters/transporters.module';
   controllers: [AppController],
   providers: [],
 })
-export class AppModule {}
+export class AppModule { }

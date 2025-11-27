@@ -1,29 +1,59 @@
-// 📁 src/uploads/providers/local-storage.provider.ts
+// src/uploads/providers/local.storage.ts
+import { Injectable } from '@nestjs/common';
+import { createReadStream, existsSync } from 'fs';
+import { resolve } from 'path';
+import { Stream } from 'stream';
 
-import { StorageProvider } from './storage.provider';
-import { promises as fs } from 'fs';
-import { join } from 'path';
-import { randomUUID } from 'crypto';
+/**
+ * LocalStorageProvider agora implementa a interface assíncrona.
+ * Mantemos comportamento idêntico, mas retornamos Promise para compatibilidade.
+ */
+@Injectable()
+export class LocalStorageProvider {
+  private readonly basePath = resolve('uploads');
 
-export class LocalStorageProvider implements StorageProvider {
-  private baseFolder = join(__dirname, '..', '..', '..', 'uploads');
+  /**
+   * Retorna Promise<{ stream, filename } | null>
+   */
+  async getFileStream(filename: string): Promise<{ stream: Stream; filename: string } | null> {
+    const fullPath = resolve(this.basePath, filename);
 
-  // Faz o upload de um arquivo e retorna o caminho salvo.
-  async upload(file: Express.Multer.File, folder: string): Promise<string> {
-    const fileName = `${randomUUID()}-${file.originalname}`;
-    const targetFolder = join(this.baseFolder, folder);
+    if (!existsSync(fullPath)) {
+      return null;
+    }
 
-    await fs.mkdir(targetFolder, { recursive: true });
-
-    const filePath = join(targetFolder, fileName);
-    await fs.writeFile(filePath, file.buffer);
-
-    return `uploads/${folder}/${fileName}`; // para armazenar no banco se precisar
+    const stream = createReadStream(fullPath);
+    return { stream, filename };
   }
 
-  // Remove um arquivo armazenado.
+  async upload(file: Express.Multer.File, folder: string): Promise<string> {
+    const fs = await import('fs/promises');
+    const dir = resolve(this.basePath, folder);
+    await fs.mkdir(dir, { recursive: true });
+
+    // salvar com nome original (ou gerar uuid se preferir)
+    const savedName = `${Date.now()}-${file.originalname}`;
+    const fullPath = resolve(dir, savedName);
+    await fs.writeFile(fullPath, file.buffer);
+    // salvamos o path relativo (por exemplo "uploads/folder/name")
+    return `${folder}/${savedName}`;
+  }
+
   async delete(filePath: string): Promise<void> {
-    const fullPath = join(this.baseFolder, '..', filePath);
-    await fs.unlink(fullPath).catch(() => {});
+    const fs = await import('fs/promises');
+    const fullPath = resolve(this.basePath, filePath);
+    if (existsSync(fullPath)) {
+      await fs.unlink(fullPath).catch(() => { });
+    }
+  }
+
+  // -----------------------------------------------------------
+  // 🔥 NOVO (opcional): URL direta para o arquivo local
+  // Mantém compatibilidade com providers que usam signed URLs.
+  // -----------------------------------------------------------
+  async getDownloadUrl(fileKey: string): Promise<string> {
+    // Exemplo:
+    // fileKey = "vehicle/123-title.jpg"
+    return `http://localhost:3000/uploads/${fileKey}`;
   }
 }

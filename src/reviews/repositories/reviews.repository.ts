@@ -5,7 +5,7 @@ import { ReviewsRepositoryInterface } from './reviews.repository.interface';
 
 @Injectable()
 export class ReviewsRepository implements ReviewsRepositoryInterface {
-  constructor(private prisma: PrismaService) {}
+  constructor(private prisma: PrismaService) { }
   // Implementing the findByFreightId method
   // This method will return a review by its freight ID or null if not found.
   async findByFreightId(freightId: string) {
@@ -18,9 +18,13 @@ export class ReviewsRepository implements ReviewsRepositoryInterface {
 
   // Implementing the create method
   // This method will create a new review in the database.
-  async create(data: CreateReviewDto) {
+  async create(data: CreateReviewDto, userId: string) {
     const review = await this.prisma.review.create({
-      data,
+
+      data: {
+        userId,
+        ...data
+      },
     });
 
     return review;
