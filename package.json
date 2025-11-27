@@ -6,13 +6,13 @@
   "author": "meetcompany2025 <meetcompany2025@gmail.com>",
   "license": "MIT",
   "scripts": {
-    "build": "nest build --webpack",
+    "build": "nest build",
     "build:prisma": "nest build && npx prisma generate",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
+    "build:prod": "nest build --webpack && npm prune --production",
+    "start:prod": "node --max-old-space-size=256 dist/main",
     "start:dev": "nest start --watch",
-    "start:prod": "node --max-old-space-size=512 dist/main",
-    "prebuild": "rimraf dist",
     "prisma:generate": "prisma generate",
     "prisma:migrate": "prisma migrate dev",
     "prisma:studio": "prisma studio",
@@ -51,8 +51,7 @@
     "resend": "^5.0.0",
     "rxjs": "^7.8.1",
     "socket.io": "^4.8.1",
-    "swagger-ui-express": "^5.0.1",
-    "un": "^0.0.0"
+    "swagger-ui-express": "^5.0.1"
   },
   "devDependencies": {
     "@eslint/eslintrc": "^3.2.0",
