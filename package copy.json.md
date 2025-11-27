@@ -1,4 +1,4 @@
-{
+<!-- {
   "name": "kamilink-api",
   "version": "1.0.0",
   "main": "index.js",
@@ -20,7 +20,7 @@
     "test:unit": "jest --runTestsByPath src/**/*.spec",
     "test:int": "jest --runTestsByPath src/tests/integration",
     "test:e2e": "jest --runTestsByPath src/tests/e2e"
-  },
+  },  
   "dependencies": {
     "@aws-sdk/client-s3": "^3.932.0",
     "@aws-sdk/s3-request-presigner": "^3.932.0",
@@ -104,4 +104,4 @@
     "coverageDirectory": "../coverage",
     "testEnvironment": "node"
   }
-}
+} -->
